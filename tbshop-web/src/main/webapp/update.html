@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
+ <link rel="stylesheet" href="/css2/index2.css" type="text/css"></link>
+ <!-- angujs -->
+<script type="text/javascript" src="plugins/angularjs/angular.min.js"></script>
+
+<script type="text/javascript" src="js/base.js"></script>
+<script type="text/javascript" src="js/controller/baseController.js"></script>
+<script type="text/javascript" src="js/controller/shopController.js"></script>
+<script type="text/javascript" src="js/service/shopService.js"></script>
+<script type="text/javascript" src="js/service/uploadService.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="shopController" ng-init="shopHui()">
+	<table>
+		<tr>
+			<td>商品名称</td>
+			<td>
+				<input type="text" ng-model="entity.name">
+			</td>
+		</tr>
+		<tr>
+			<td>库存</td>
+			<td>
+				<input type="text" ng-model="entity.kc">
+			</td>
+		</tr>
+		<tr>
+			<td>商品单价</td>
+			<td>
+				<input type="text" ng-model="entity.price">
+			</td>
+		</tr>
+		<tr>
+			<td>购买数量</td>
+			<td>
+				<input type="text" ng-model="entity.num">
+			</td>
+		</tr>
+		<tr>
+			<td>收件人姓名</td>
+			<td>
+				<input type="text" ng-model="entity.sjname">
+			</td>
+		</tr>
+		<tr>
+			<td>收件人电话</td>
+			<td>
+				<input type="text" ng-model="entity.tel">
+			</td>
+		</tr>
+		<tr>
+			<td>收件人地址</td>
+			<td>
+				<input type="text" ng-model="entity.address">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<input type="button" value="提交" ng-click="shopAdd()">
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

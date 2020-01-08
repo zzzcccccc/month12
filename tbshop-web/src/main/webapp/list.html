@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
+ <link rel="stylesheet" href="/css2/index2.css" type="text/css"></link>
+ <!-- angujs -->
+<script type="text/javascript" src="plugins/angularjs/angular.min.js"></script>
+<!-- 分页组件开始 -->
+<script src="plugins/angularjs/pagination.js"></script>
+<link rel="stylesheet" href="plugins/angularjs/pagination.css">
+
+<script type="text/javascript" src="js/base.js"></script>
+<script type="text/javascript" src="js/base-pagination.js"></script>
+<script type="text/javascript" src="js/service/shopService.js"></script>
+<script type="text/javascript" src="js/service/uploadService.js"></script>
+<script type="text/javascript" src="js/controller/shopController.js"></script>
+<script type="text/javascript" src="js/controller/baseController.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="shopController" ng-init="reloadList();findUser();dingList()">
+	<a href="add.html">录入商品</a>
+	<table ng-if="role=='ROLE_SELLER'">
+		<tr>
+			<td>图片</td>
+			<td>商品类型</td>
+			<td>商品名称</td>
+			<td>商品描述</td>
+			<td>单价</td>
+			<td>库存</td>
+			<td>状态</td>
+			<td>操作</td>
+		</tr>
+		<tr ng-repeat="entity in sList">
+			<td>
+				<img alt="" ng-src="{{entity.imgpath}}" width="50px" height="50px">
+			</td>
+			<td>{{entity.lname}}</td>
+			<td>{{entity.name}}</td>
+			<td>{{entity.content}}</td>
+			<td>{{entity.price}}</td>
+			<td>{{entity.kc}}</td>
+			<td>
+				<input type="button" value="{{status[entity.zt]}}" ng-click="changeZt(entity)">			
+			</td>
+			<td>
+				<a href="update.html#?sid={{entity.sid}}">下单</a>
+			</td>
+		</tr>
+	</table>
+	<table ng-if="role=='ROLE_USER'">
+		<tr>
+			<td>订单编号</td>
+			<td>收件人姓名</td>
+			<td>收件人电话</td>
+			<td>收件地址</td>
+			<td>总价钱</td>
+			<td>数量</td>
+			<td>状态</td>
+		</tr>
+		<tr ng-repeat="entity in dList">
+			<td>{{entity.bid}}</td>
+			<td>{{entity.sjname}}</td>
+			<td>{{entity.tel}}</td>
+			<td>{{entity.address}}</td>
+			<td>{{entity.pricenum}}</td>
+			<td>{{entity.num}}</td>
+			<td>
+				<input type="button" value="{{status1[entity.zt]}}" >			
+			</td>
+		</tr>
+	</table>
+	<!-- 分页 -->
+<tm-pagination conf="paginationConf"></tm-pagination>
+</body>
+</html>
